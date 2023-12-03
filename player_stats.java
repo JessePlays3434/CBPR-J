@@ -76,11 +76,40 @@ public class player_stats {
 		return army_count;
 	}
 
-	public int player_battle(){
-		int rand1 = (int)(Math.random()*100)+1;
+	public int player_battle(int army_count, int army_skill_level, int territory, int passive_income_level){
+	
+		int rand1 = (int)(Math.random()*99)+1;
 		int bonus = army_count+army_skill_level*territory_count+passive_income_level;
 		int battle_total = rand1+bonus;
 		return battle_total;
+	}
+
+	public int getArmySkillLevel(){
+		return army_skill_level;
+	}
+
+	public int getPassiveIncomeLevel(){
+		return passive_income_level;
+	}
+
+	public int getTerritory(){
+		return territory_count;
+	}
+	
+	public void setMoney(boolean yes){
+		if(yes == true){
+			money += 10000;
+		}else {
+			money -= 10000;
+		}
+	}
+
+	public void setArmy(boolean yes){
+		if(yes == true){
+			army_count += 1;
+		}else {
+			army_count -= 1;
+		}
 	}
 
 }

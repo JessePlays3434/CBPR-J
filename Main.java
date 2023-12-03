@@ -25,7 +25,7 @@ public class Main {
 		
 
 		//"Game Loop"
-		while(p1.getMoney() > 0 || p2.getMoney() > 0) {
+		while(p1.getMoney() > 0 && p2.getMoney() > 0) {
 			System.out.println("It is your turn "+ p1.name +". Here are your options: \n[1] Expand Territory [$10,000]\n"
 					+ "[2] Upgrade Technology\r\n"
 					+ "[3] Recruit Army [$8,000]\r\n"
@@ -43,36 +43,24 @@ public class Main {
 				p1.recruit_army();
 			}
 			if(p1choice == 4) {
-				int p1battlenum = p1.player_battle();
-				int p2battlenum = p2.player_battle();
+				int p1battlenum = p1.player_battle(p1.getTerritory(), p1.getArmyCount(), p1.getArmySkillLevel(), p1.getPassiveIncomeLevel());
+				int p2battlenum = p2.player_battle(p2.getTerritory(), p2.getArmyCount(), p2.getArmySkillLevel(), p2.getPassiveIncomeLevel());
 
 				//Player 1's Battle Num is Greater; Adds Money to P1 acct and subtracts from P2 army count
 				if(p1battlenum > p2battlenum){
 					
-					int p2money = p2.getMoney();
-					p2money -= 10000;
-					int p2army = p2.getArmyCount();
-					if(p2army > 0){
-						p2army --;
-					}
-
-					int p1money = p1.getMoney();
-					p1money += 10000;
+					p1.setMoney(true);
+					p2.setMoney(false);
+					p2.setArmy(false);
 
 					System.out.println(p1battlenum + " > " + p2battlenum + "\n" + p1.name + " Wins!");
 				
 				//Same as above, but for P2
 				}else if(p2battlenum > p1battlenum){
 
-					int p1money = p1.getMoney();
-					p1money -= 10000;
-					int p1army = p1.getArmyCount();
-					if(p1army > 0){
-						p1army --;
-					}
-
-					int p2money = p2.getMoney();
-					p2money += 10000;
+					p2.setMoney(true);
+					p1.setMoney(false);
+					p1.setArmy(false);
 
 					System.out.println(p2battlenum + " > " + p1battlenum + "\n" + p2.name + " Wins!");
 			}else{
@@ -105,39 +93,23 @@ public class Main {
 			
 			//Same as P1
 			if(p2choice == 4) {
-				int p1battlenum = p1.player_battle();
-				int p2battlenum = p2.player_battle();
+				int p1battlenum = p1.player_battle(p1.getTerritory(), p1.getArmyCount(), p1.getArmySkillLevel(), p1.getPassiveIncomeLevel());
+				int p2battlenum = p2.player_battle(p2.getTerritory(), p2.getArmyCount(), p2.getArmySkillLevel(), p2.getPassiveIncomeLevel());
 
 				if(p1battlenum > p2battlenum){
 
-					int p1money = p1.getMoney();
-					int p2money = p2.getMoney();
-					int p2army = p2.getArmyCount();
-					p2money -= 10000;
-					p1money += 10000;
-
-					p1money = p1.getMoney();
-					p2money = p2.getMoney();
-
-					if(p2army > 0){
-						p2army --;
-						p2army = p2.getArmyCount();
-					}
+					p1.setMoney(true);
+					p2.setMoney(false);
+					p2.setArmy(false);
 
 					System.out.println(p1battlenum + " > " + p2battlenum + "\n" + p1.name + " Wins!");
 				
 				}else if(p2battlenum > p1battlenum){
 
+					p2.setMoney(true);
+					p1.setMoney(false);
+					p1.setArmy(false);
 					
-					int p1money = p1.getMoney();
-					int p2money = p2.getMoney();
-					int p1army = p1.getArmyCount();
-					p2money += 10000;
-					p1money -= 10000;
-					if(p1army > 0){
-						p1army --;
-					}
-
 					System.out.println(p2battlenum + " > " + p1battlenum + "\n" + p2.name + " Wins!");
 				}
 			}
@@ -146,7 +118,7 @@ public class Main {
 			System.out.println(p1.toString()+"\n");
 			System.out.println(p2.toString()+"\n");
 			
-			}
+		}
 
 			//If P1/P2 Money Balance is 0, Game Over
 			if(p1.getMoney() == 0){
@@ -156,8 +128,8 @@ public class Main {
 			}else if(p1.getMoney() == 0 && p2.getMoney() == 0){
 				System.out.println("You both are out of money! You both lose!");
 			}
-	
+		
 		}
-
-	}
+	
+}
 
