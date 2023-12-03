@@ -26,9 +26,9 @@ public class player_stats {
 		if(money > 10000) {
 			money -= 10000;
 			territory_count ++;
-			System.out.println(name + " expands their territory! [-$10,000]");
-		}else {
-			System.out.println("YOU ARE POOR");
+			System.out.println("\n"+ name + " expands their territory! [-$10,000]\n");
+		}else if(money <= 10000){
+			System.out.println("\nYOU ARE POOR\n");
 		}
 	}
 	
@@ -36,6 +36,8 @@ public class player_stats {
 		if(money > 8000) {
 			money -= 8000;
 			army_count ++;
+		}else if(money < 8000){
+			System.out.println("\nYOU ARE POOR\n");
 		}
 	}
 	
@@ -51,8 +53,8 @@ public class player_stats {
 			}else if(choice == 2) {
 				money -= 8000;
 				passive_income_level ++;
-			}else {
-				System.out.println("idiot");
+			}else if(money < 8000){
+				System.out.println("\nYOU ARE POOR\n");
 			}
 		}
 	}
@@ -80,5 +82,5 @@ public class player_stats {
 		int battle_total = rand1+bonus;
 		return battle_total;
 	}
-		
+
 }
