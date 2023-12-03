@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class player_stats {
 
+	public int random_value;
 	public String name;
 	private int territory_count;
 	private int army_count;
@@ -67,6 +68,17 @@ public class player_stats {
 	
 	public int getMoney() {
 		return money;
+	}
+
+	public int getArmyCount(){
+		return army_count;
+	}
+
+	public int player_battle(){
+		int rand1 = (int)(Math.random()*100)+1;
+		int bonus = army_count+army_skill_level*territory_count+passive_income_level;
+		int battle_total = rand1+bonus;
+		return battle_total;
 	}
 		
 }

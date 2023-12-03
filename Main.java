@@ -19,7 +19,7 @@ public class Main {
 		p2.name(p2name);
 
 		
-		System.out.println(p1.toString()+"\n");
+		System.out.println("\n"+p1.toString()+"\n");
 		System.out.println(p2.toString()+"\n");
 		
 		while(p1.getMoney() > 0 || p2.getMoney() > 0) {
@@ -35,7 +35,37 @@ public class Main {
 			}else if(p1choice == 3) {
 				p1.recruit_army();
 			}else if(p1choice == 4) {
-				System.out.println("not finished yet, idiot"); //Finish setting up battle asp
+				int p1battlenum = p1.player_battle();
+				int p2battlenum = p2.player_battle();
+
+				if(p1battlenum > p2battlenum){
+					
+					int p2money = p1.getMoney();
+					p2money -= 10000;
+					int p2army = p1.getArmyCount();
+					if(p2army > 0){
+						p2army --;
+					}
+
+					int p1money = p1.getMoney();
+					p1money += 10000;
+
+					System.out.println(p1battlenum + " > " + p2battlenum + "\n" + p1.name + " Wins!");
+				}else if(p2battlenum > p1battlenum){
+
+					int p1money = p1.getMoney();
+					p1money -= 10000;
+					int p1army = p1.getArmyCount();
+					if(p1army > 0){
+						p1army --;
+					}
+
+					int p2money = p1.getMoney();
+					p2money += 10000;
+					
+					System.out.println(p2battlenum + " > " + p1battlenum + "\n" + p2.name + " Wins!");
+			}else{
+				System.out.println("What");
 			}
 			
 			System.out.println(p1.toString()+"\n");
@@ -50,10 +80,36 @@ public class Main {
 				p2.expand_territory();
 			}else if(p2choice == 2) {
 				p2.upgrade_technology();
-			}else if(p1choice == 3) {
+			}else if(p2choice == 3) {
 				p2.recruit_army();
-			}else if(p1choice == 4) {
-				System.out.println("not finished yet, idiot"); //Finish setting up battle asp
+			}else if(p2choice == 4) {
+				if(p1battlenum > p2battlenum){
+					
+					int p2money = p1.getMoney();
+					p2money -= 10000;
+					int p2army = p1.getArmyCount();
+					if(p2army > 0){
+						p2army --;
+					}
+
+					int p1money = p1.getMoney();
+					p1money += 10000;
+
+					System.out.println(p1battlenum + " > " + p2battlenum + "\n" + p1.name + " Wins!");
+				}else if(p2battlenum > p1battlenum){
+
+					int p1money = p1.getMoney();
+					p1money -= 10000;
+					int p1army = p1.getArmyCount();
+					if(p1army > 0){
+						p1army --;
+					}
+
+					int p2money = p1.getMoney();
+					p2money += 10000;
+					
+					System.out.println(p2battlenum + " > " + p1battlenum + "\n" + p2.name + " Wins!");
+			}
 			}
 			
 			System.out.println(p1.toString()+"\n");
@@ -62,5 +118,7 @@ public class Main {
 		}
 	
 	}
-		
+
+	}
+	
 }
