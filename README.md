@@ -1,1 +1,1 @@
-The quick brown fox jumps over the lazy dog.
+Faithful re-make of Country Battle Plus Remastered entirely in Java
