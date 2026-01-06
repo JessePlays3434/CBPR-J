@@ -45,7 +45,7 @@ public class player_stats {
 		if(money > 8000) {
 			Scanner keyboard = new Scanner(System.in);
 
-			System.out.println(name + ", what technology would you like to upgrade?\n[1] Army Skll [$8,000]\n[2] Passive Income Level [$8,000]");
+			System.out.println(name + ", what technology would you like to upgrade?\n[1] Army Skill [$8,000]\n[2] Passive Income Level [$8,000]");
 			int choice = keyboard.nextInt();
 			if(choice == 1 && money >= 8000) {
 				money -=8000;

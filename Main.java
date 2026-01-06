@@ -121,11 +121,11 @@ public class Main {
 		}
 
 			//If P1/P2 Money Balance is 0, Game Over
-			if(p1.getMoney() == 0){
+			if(p1.getMoney() <= 0){
 				System.out.println(p1name+" is out of money! "+p2name+" is the winner!");
-			}else if(p2.getMoney() == 0){
+			}else if(p2.getMoney() <= 0){
 				System.out.println(p2name+" is out of money! "+p1name+" is the winner!");
-			}else if(p1.getMoney() == 0 && p2.getMoney() == 0){
+			}else if(p1.getMoney() <= 0 && p2.getMoney() <= 0){
 				System.out.println("You both are out of money! You both lose!");
 			}
 		
